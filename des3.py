@@ -50,7 +50,7 @@ def DataExplorerScreen3():
 
     # define the window layout
     layout = [[sg.Canvas(key='-CANVAS-')],
-              [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
+            #   [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
               [sg.Multiline(default_text='Data Information Summary:', size=(
                   35, 5)), sg.Multiline(default_text='Chat System:', size=(35, 5))],
               [sg.Button('Previous'), sg.Button('Next')],
