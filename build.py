@@ -13,10 +13,10 @@ matplotlib.use('TkAgg')
 """
 
 def show(nextScreen, previousScreen):
-    # sg.theme('LightGreen')
+    
     sg.set_options(element_padding=(5, 5))
 
-    # ------ Menu Definition ------ #
+    # ------ ANCHOR MENU SECTION ------ #
     menu_def = [['&File', ['&Open Upload','&Logout', '&Exit']],
                 ['&Navigation', ['&Property issue dates(DES1)', '&Types of ownership(DES2)', '&Number of property owners(DES3)']],
                 ['&Help', '&About...'],
@@ -31,7 +31,7 @@ def show(nextScreen, previousScreen):
     fig = plt.figure(figsize=(10,4.2))
 
 
-    # ------ GUI Defintion ------ #
+    # ------ ANCHOR GUI/LAYOUT SECTION ------ #
     layout = [
         [sg.Menu(menu_def, tearoff=False, pad=(200, 1))],
         [sg.Canvas(key='-CANVAS-')],
@@ -51,18 +51,13 @@ def show(nextScreen, previousScreen):
     
     fig_canvas_agg = draw_figure(window['-CANVAS-'].TKCanvas, fig)
 
-    # ------ Loop & Process button menu choices ------ #
+    # ------ ANCHOR LOOP & PROCESS BUTTON & MENU CHOICES ------ #
     while True:
         event, values = window.read()
         if event in (sg.WIN_CLOSED, 'Exit'):
             break
         print(event, values)
-        # ------ Process menu choices ------ #
-        if event == 'About...':
-            # window.disappear()
-            sg.popup('About this program', 'Version 1.0',
-                     'PySimpleGUI Version', sg.version,  grab_anywhere=True,)
-            # window.reappear()
+        # ------ Process button choices ------ #
         if event == 'Previous':
             window.close()
             previousScreen.DataExplorerScreen()
@@ -70,9 +65,11 @@ def show(nextScreen, previousScreen):
             window.close()
             nextScreen.DataExplorerScreen()
             window.close()
-        if event == 'Logout':
-            window.close()
-            login.login_main()
+            
+        # ------ Process menu choices ------ #
+        if event == 'About...':
+            sg.popup('About this program', 'Version 1.0',
+                     'PySimpleGUI Version', sg.version,  grab_anywhere=True,)
         if event == 'Property issue dates(DES1)':
             window.close()
             des1.DataExplorerScreen()
@@ -85,3 +82,6 @@ def show(nextScreen, previousScreen):
             window.close()
             des3.DataExplorerScreen()
             window.close()
+        if event == 'Logout':
+            window.close()
+            login.login_main()
