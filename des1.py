@@ -1,7 +1,7 @@
 """ interactive screen showing graphical data to user.
 
     Returns:
-        Data Explorer Screens layout shared between multiple interfaces -PySimpleGUI 
+        Data Explorer Screens build shared between multiple interfaces -PySimpleGUI 
 """
 
 import PySimpleGUI as sg
@@ -14,16 +14,17 @@ import matplotlib
 import des2
 import des3 
 import dataexplorerscreens as des
+import build
 matplotlib.use('TkAgg')
 
 
 # ------------------------------- DATA EXPLORER SCREEN ONE START -------------------------------
 
-def DataExplorerScreen1():
+def DataExplorerScreen():
     """interactive screen showing graphical data to user. Includes navigation and chatsystem
 
     Returns:
-        Data Explorer Screens layout shared between multiple interfaces -PySimpleGUI 
+        Data Explorer Screens build shared between multiple interfaces -PySimpleGUI 
     """    
     # ---- MATPLOTLIB CODE HERE -----
     labels = ['G1', 'G2', 'G3', 'G4', 'G5']
@@ -51,46 +52,46 @@ def DataExplorerScreen1():
     # ---- END OF MATPLOTLIB CODE ----
 
     # ---- Beginning of Matplotlib helper code ----
+    build.show(des2, des3)
+    # def draw_figure(canvas, figure):
+    #     figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
+    #     figure_canvas_agg.draw()
+    #     figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
+    #     return figure_canvas_agg
 
-    def draw_figure(canvas, figure):
-        figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
-        figure_canvas_agg.draw()
-        figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
-        return figure_canvas_agg
+    # # ---- Beginning of GUI CODE ----
 
-    # ---- Beginning of GUI CODE ----
+    # # define the window build
+    # build = [[sg.Canvas(key='-CANVAS-')],
+    #         #   [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
+    #           [sg.Multiline(default_text='Data Information Summary:', size=(
+    #               35, 5)), sg.Multiline(default_text='Chat System:', size=(35, 5))],
+    #           [sg.Button('Previous'), sg.Button('Next')],
+    #           [sg.Button('Back'), sg.Button('Logout')]]
 
-    # define the window layout
-    layout = [[sg.Canvas(key='-CANVAS-')],
-            #   [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
-              [sg.Multiline(default_text='Data Information Summary:', size=(
-                  35, 5)), sg.Multiline(default_text='Chat System:', size=(35, 5))],
-              [sg.Button('Previous'), sg.Button('Next')],
-              [sg.Button('Back'), sg.Button('Logout')]]
+    # # create the form and show it without the plot
+    # window = sg.Window('Property issue dates', build, finalize=True,
+    #                    element_justification='center', size=(800, 700))
 
-    # create the form and show it without the plot
-    window = sg.Window('Property issue dates', layout, finalize=True,
-                       element_justification='center', size=(800, 700))
+    # # add the plot to the window
+    # fig_canvas_agg = draw_figure(window['-CANVAS-'].TKCanvas, fig)
 
-    # add the plot to the window
-    fig_canvas_agg = draw_figure(window['-CANVAS-'].TKCanvas, fig)
+    # event, values = window.read()
+    # print(event, values)
 
-    event, values = window.read()
-    print(event, values)
-
-    if event == None or event == 'Exit Application':
-        window.close()
-    if event == 'Previous':
-        window.close()
-        des3.DataExplorerScreen3()
-    if event == 'Next':
-        window.close()
-        des2.DataExplorerScreen2()
-    if event == 'Back':
-        window.close()
-        datasourcenav.Data_source_page()
-    if event == 'Logout':
-        window.close()
-        login.login_main()
+    # if event == None or event == 'Exit Application':
+    #     window.close()
+    # if event == 'Previous':
+    #     window.close()
+    #     des3.DataExplorerScreen3()
+    # if event == 'Next':
+    #     window.close()
+    #     des2.DataExplorerScreen2()
+    # if event == 'Back':
+    #     window.close()
+    #     datasourcenav.Data_source_page()
+    # if event == 'Logout':
+    #     window.close()
+    #     login.login_main()
 # ------------------------------- DATA EXPLORER SCREEN ONE END -------------------------------
 

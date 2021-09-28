@@ -4,7 +4,7 @@
 """
 
 import PySimpleGUI as sg
-import datasourcenav
+import des1
 
 # ------------------------------- LOGIN MAIN PAGE START -------------------------------
 def login_main():   
@@ -26,7 +26,7 @@ def login_main():
         window.close()
     if event == 'Login':
         window.close()
-        datasourcenav.Data_source_page()
+        des1.DataExplorerScreen()
     if event == 'Exit Application':
         window.close()
 # ------------------------------- LOGIN MAIN PAGE END -------------------------------

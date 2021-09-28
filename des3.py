@@ -14,11 +14,12 @@ import matplotlib
 import des1
 import des2
 import dataexplorerscreens as des
+import build
 matplotlib.use('TkAgg')
 
 # ------------------------------- DATA EXPLORER SCREEN THREE START -------------------------------
 
-def DataExplorerScreen3():
+def DataExplorerScreen():
     """interactive screen showing graphical data to user. Includes navigation and chatsystem
 
     Returns:
@@ -37,47 +38,47 @@ def DataExplorerScreen3():
 
 
     # ---- END OF MATPLOTLIB CODE ----
-
+    build.show(des1, des2)
     # ---- Beginning of Matplotlib helper code ----
 
-    def draw_figure(canvas, figure):
-        figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
-        figure_canvas_agg.draw()
-        figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
-        return figure_canvas_agg
+    # def draw_figure(canvas, figure):
+    #     figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
+    #     figure_canvas_agg.draw()
+    #     figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
+    #     return figure_canvas_agg
 
-    # ---- Beginning of GUI CODE ----
+    # # ---- Beginning of GUI CODE ----
 
-    # define the window layout
-    layout = [[sg.Canvas(key='-CANVAS-')],
-            #   [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
-              [sg.Multiline(default_text='Data Information Summary:', size=(
-                  35, 5)), sg.Multiline(default_text='Chat System:', size=(35, 5))],
-              [sg.Button('Previous'), sg.Button('Next')],
-              [sg.Button('Back'), sg.Button('Logout')]]
+    # # define the window layout
+    # layout = [[sg.Canvas(key='-CANVAS-')],
+    #         #   [sg.Button('ZOOM +'), sg.Button('ZOOM -')],
+    #           [sg.Multiline(default_text='Data Information Summary:', size=(
+    #               35, 5)), sg.Multiline(default_text='Chat System:', size=(35, 5))],
+    #           [sg.Button('Previous'), sg.Button('Next')],
+    #           [sg.Button('Back'), sg.Button('Logout')]]
 
-    # create the form and show it without the plot
-    window = sg.Window('Number of property owners', layout,
-                       finalize=True, element_justification='center', size=(800, 700))
+    # # create the form and show it without the plot
+    # window = sg.Window('', layout,
+    #                    finalize=True, element_justification='center', size=(800, 700))
 
-    # add the plot to the window
-    fig_canvas_agg = draw_figure(window['-CANVAS-'].TKCanvas, fig)
+    # # add the plot to the window
+    # fig_canvas_agg = draw_figure(window['-CANVAS-'].TKCanvas, fig)
 
-    event, values = window.read()
-    print(event, values)
+    # event, values = window.read()
+    # print(event, values)
 
-    if event == None or event == 'Exit Application':
-        window.close()
-    if event == 'Previous':
-        window.close()
-        des2.DataExplorerScreen2()
-    if event == 'Next':
-        window.close()
-        des1.DataExplorerScreen1()
-    if event == 'Back':
-        window.close()
-        datasourcenav.Data_source_page()
-    if event == 'Logout':
-        window.close()
-        login.login_main()
+    # if event == None or event == 'Exit Application':
+    #     window.close()
+    # if event == 'Previous':
+    #     window.close()
+    #     des2.DataExplorerScreen2()
+    # if event == 'Next':
+    #     window.close()
+    #     des1.DataExplorerScreen1()
+    # if event == 'Back':
+    #     window.close()
+    #     datasourcenav.Data_source_page()
+    # if event == 'Logout':
+    #     window.close()
+    #     login.login_main()
 # ------------------------------- DATA EXPLORER SCREEN THREE END -------------------------------
