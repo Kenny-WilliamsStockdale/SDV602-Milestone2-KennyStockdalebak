@@ -76,8 +76,3 @@ def login_main_Unsuccessful():
         window.close()
         login_main()
 # ------------------------------- LOGIN ERROR PAGE END -------------------------------
-# Invoking start script/function for user to begin the proccess of using the application.  
-if __name__ == "__main__":
-    # def function here
-    login_main()
-    pass

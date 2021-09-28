@@ -2,13 +2,8 @@ import PySimpleGUI as sg
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib
+import login
 matplotlib.use('TkAgg')
-
-# import des1
-# import des2
-# import des3 
-# import datasourcenav
-# import login
 
 """[Simple Data Explorer screen template 
     that can be used as a module for different displays of data]
@@ -36,7 +31,6 @@ def show(nextScreen, previousScreen):
     # ------ GUI Defintion ------ #
     layout = [
         [sg.Menu(menu_def, tearoff=False, pad=(200, 1))],
-        # [sg.Text('Data Explorer Screen 1', font=('current 18'))],
         [sg.Canvas(key='-CANVAS-')],
         [sg.Multiline(default_text='Data Information Summary:', 
                      size=(55, 11), font=('current 12')),
@@ -73,14 +67,6 @@ def show(nextScreen, previousScreen):
             window.close()
             nextScreen.DataExplorerScreen()
             window.close()
-        # if event == 'Back':
-        #     window.close()
-        #     datasourcenav.Data_source_page()
-        # if event == 'Logout':
-        #     window.close()
-        #     login.login_main()
-            
-    
-# if __name__ == "__main__":
-#     test_menus()
-#     pass
+        if event == 'Logout':
+            window.close()
+            login.login_main()
