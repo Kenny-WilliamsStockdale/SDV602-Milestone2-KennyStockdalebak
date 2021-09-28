@@ -51,7 +51,7 @@ def login_main_Welcome():
         window.close()
     if event == 'View Data':
         window.close()
-        datasourcenav.Data_source_page()
+        des1.DataExplorerScreen()
     if event == 'Exit Application':
         window.close()
 # ------------------------------- LOGIN WELCOME PAGE END -------------------------------
