@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib
 import login
+import des1
+import des2
+import des3
 matplotlib.use('TkAgg')
 
 """[Simple Data Explorer screen template 
@@ -58,7 +61,7 @@ def show(nextScreen, previousScreen):
         if event == 'About...':
             # window.disappear()
             sg.popup('About this program', 'Version 1.0',
-                     'PySimpleGUI Version', sg.version,  grab_anywhere=True)
+                     'PySimpleGUI Version', sg.version,  grab_anywhere=True,)
             # window.reappear()
         if event == 'Previous':
             window.close()
@@ -70,3 +73,15 @@ def show(nextScreen, previousScreen):
         if event == 'Logout':
             window.close()
             login.login_main()
+        if event == 'Property issue dates(DES1)':
+            window.close()
+            des1.DataExplorerScreen()
+            window.close()    
+        if event == 'Types of ownership(DES2)':
+            window.close()
+            des2.DataExplorerScreen()
+            window.close()
+        if event == 'Number of property owners(DES3)':
+            window.close()
+            des3.DataExplorerScreen()
+            window.close()
