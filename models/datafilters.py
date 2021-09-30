@@ -1,5 +1,5 @@
 # import pandas as pd
-import model.importcsv as importcsv
+import models.importcsv as importcsv
 
 
 def merge(newFile, currentFile):
