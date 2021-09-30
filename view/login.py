@@ -4,7 +4,8 @@
 """
 
 import PySimpleGUI as sg
-import des1
+# import view.des1 as des1
+import view.des as des
 
 # ------------------------------- LOGIN MAIN PAGE START -------------------------------
 def login_main():   
@@ -26,7 +27,7 @@ def login_main():
         window.close()
     if event == 'Login':
         window.close()
-        des1.DataExplorerScreen()
+        des.des1.show()
     if event == 'Exit Application':
         window.close()
 # ------------------------------- LOGIN MAIN PAGE END -------------------------------

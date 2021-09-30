@@ -2,20 +2,29 @@ import PySimpleGUI as sg
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib
-import login
-import des1
-import des2
-import des3
-matplotlib.use('TkAgg')
+import view.des as des
 
+matplotlib.use('TkAgg')
+explorer_screen_name = "DES Explorer Screen"
+current_des = None
 """[Simple Data Explorer screen template 
     that can be used as a module for different displays of data]
 """
-
-def show(nextScreen, previousScreen):
+def show_des(p_des):
+    global explorer_screen_name
+    global current_des
+    current_des = p_des
+    explorer_screen_name = p_des.des_name
+    show(current_des.nextScreen,current_des.previousScreen)
     
+def   show(nextScreen, previousScreen):
+    import view.login as login
+    import view.des1 as des1
+    import view.des2 as des2
+    import view.des3 as des3
     sg.set_options(element_padding=(5, 5))
-
+    global explorer_screen_name
+    global current_des
     # ------ ANCHOR MENU SECTION ------ #
     menu_def = [['&File', ['&Open Upload','&Logout', '&Exit']],
                 ['&Navigation', ['&Property issue dates(DES1)', '&Types of ownership(DES2)', '&Number of property owners(DES3)']],
@@ -41,7 +50,7 @@ def show(nextScreen, previousScreen):
                      font=('current 12'), size=(55, 11))],
         [sg.Button('Previous', font=('current 20')), sg.Button('Next', font=('current 20'))]]
 
-    window = sg.Window("Data Explorer Screen",
+    window = sg.Window(current_des.des_name,
                        layout,
                        default_element_size=(12, 1),
                        default_button_element_size=(12, 1),
@@ -60,10 +69,10 @@ def show(nextScreen, previousScreen):
         # ------ Process button choices ------ #
         if event == 'Previous':
             window.close()
-            previousScreen.DataExplorerScreen()
+            current_des.previousScreen.show()
         if event == 'Next':
             window.close()
-            nextScreen.DataExplorerScreen()
+            current_des.nextScreen.show()
             window.close()
             
         # ------ Process menu choices ------ #
@@ -72,16 +81,21 @@ def show(nextScreen, previousScreen):
                      'PySimpleGUI Version', sg.version,  grab_anywhere=True,)
         if event == 'Property issue dates(DES1)':
             window.close()
-            des1.DataExplorerScreen()
+            des.des1.show()
             window.close()    
         if event == 'Types of ownership(DES2)':
             window.close()
-            des2.DataExplorerScreen()
+            des.des2.show()
             window.close()
         if event == 'Number of property owners(DES3)':
             window.close()
-            des3.DataExplorerScreen()
+            des.des3.show()
             window.close()
         if event == 'Logout':
             window.close()
             login.login_main()
+            
+            
+# template empty until parsed in data
+
+# class DataExplorerScreen()
