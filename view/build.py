@@ -18,10 +18,10 @@ def show_des(p_des):
     show(current_des.nextScreen,current_des.previousScreen)
     
 def   show(nextScreen, previousScreen):
-    import view.login as login
-    import view.des1 as des1
-    import view.des2 as des2
-    import view.des3 as des3
+    # import view.login as login
+    # import view.des1 as des1
+    # import view.des2 as des2
+    # import view.des3 as des3
     sg.set_options(element_padding=(5, 5))
     global explorer_screen_name
     global current_des

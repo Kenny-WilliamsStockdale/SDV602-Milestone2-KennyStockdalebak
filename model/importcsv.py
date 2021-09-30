@@ -54,8 +54,8 @@ filePath = "src/data/test_data_1.csv"
 def append(newFile, currentFile):
         header = ["id","modified","language","institutionCode","collectionCode","basisOfRecord","dynamicProperties","source","catalogNumber","occurrenceRemarks","individualCount","sex","lifeStage","occurrenceStatus","associatedTaxa","eventID","samplingProtocol","eventDate","startDayOfYear","year","month","day","waterBody","country","stateProvince","county","locality","minimumDepthInMeters","maximumDepthInMeters","decimalLatitude","decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters","footprintWKT","identifiedBy","typeStatus","scientificNameID","scientificName","kingdom","phylum","class","order_","family","genus","subgenus","specificEpithet","infraspecificEpithet","verbatimTaxonRank","FID"]
         # change header!!!
-        with open(currentFile, 'a', newline="") as csvfile:
-            writer = csv.writer(csvfile, header)
+        with open(currentFile, 'a', newline="") as target_csvfile:
+            writer = csv.writer(target_csvfile, header)
             for row in getData(newFile):
                 writer.writerow(row)
     
