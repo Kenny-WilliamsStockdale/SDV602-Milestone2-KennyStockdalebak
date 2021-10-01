@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib
 import view.des as des
+import view.graph_view as gv
 
 matplotlib.use('TkAgg')
 explorer_screen_name = "DES Explorer Screen"
@@ -17,8 +18,8 @@ def show_des(p_des):
     explorer_screen_name = p_des.des_name
     show(current_des.nextScreen,current_des.previousScreen)
     
-def   show(nextScreen, previousScreen):
-    # import view.login as login
+def show(nextScreen, previousScreen):
+    import view.login as login
     # import view.des1 as des1
     # import view.des2 as des2
     # import view.des3 as des3
@@ -37,7 +38,7 @@ def   show(nextScreen, previousScreen):
         figure_canvas_agg.get_tk_widget().pack(side='top', fill='both', expand=1)
         return figure_canvas_agg
             
-    fig = plt.figure(figsize=(10,4.2))
+    fig = current_des.getfigure()
 
 
     # ------ ANCHOR GUI/LAYOUT SECTION ------ #
